@@ -5,6 +5,7 @@ import {
   Bars3Icon as MenuIcon
 } from '@heroicons/react/24/outline'
 import { Logo } from '@assets'
+import { signIn } from 'next-auth/react'
 
 function Header() {
   const user_name = 'Artem'
@@ -39,7 +40,7 @@ function Header() {
 
         {/* Right side */}
         <div className="flex items-center gap-4 mx-6">
-          <button className="Link">
+          <button className="Link" onClick={() => signIn()}>
             <p>Hello, {user_name}</p>
             <p className="font-bold md:text-sm">Account & Lists</p>
           </button>

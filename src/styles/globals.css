@@ -41,4 +41,5 @@
 
 .slider img {
   @apply h-full object-cover object-center;
+  min-height: 250px;
 }
