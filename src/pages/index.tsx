@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Header from '@components/Header'
+
 import Banner from '@src/components/Banner'
 import ProductFeed from '@src/components/ProductFeed'
 import { IProduct } from '@src/types/IProduct'
+import DefaultLayout from '@src/layouts/DefaultLayout'
 
 type Props = {
   products: IProduct[]
@@ -11,22 +11,12 @@ type Props = {
 
 const Home: NextPage = ({ products }: Props) => {
   return (
-    <div>
-      <Head>
-        <title>Amazon</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      {/* Header */}
-      <Header />
-
-      <main className="max-w-screen-2xl mx-auto">
-        {/* Banner */}
-        <Banner />
-        {/* Product Feed */}
-        <ProductFeed products={products} />
-      </main>
-    </div>
+    <DefaultLayout title={'Amazon'}>
+      {/* Banner */}
+      <Banner />
+      {/* Product Feed */}
+      <ProductFeed products={products} />
+    </DefaultLayout>
   )
 }
 

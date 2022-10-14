@@ -6,10 +6,13 @@ import {
 } from '@heroicons/react/24/outline'
 import { Logo } from '@assets'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 function Header() {
   const session = useSession()
   const user_name = session.data?.user.name
+
+  const router = useRouter()
 
   function openAccountAndListsDropdown() {}
 
@@ -29,7 +32,10 @@ function Header() {
     <header className="text-white text-xs">
       {/* Top nav */}
       <div className="bg-amazon_blue flex items-center w-full p-1 py-2">
-        <div className=" flex items-center flex-grow sm:flex-grow-0 mt-2">
+        <button
+          className=" flex items-center flex-grow sm:flex-grow-0 mt-2"
+          onClick={() => router.push('/')}
+        >
           <Image
             src={Logo}
             width={150}
@@ -37,7 +43,7 @@ function Header() {
             objectFit="contain"
             className="cursor-pointer"
           />
-        </div>
+        </button>
 
         {/* Search Bar */}
         <div
@@ -61,7 +67,10 @@ function Header() {
             <p>Returns</p>
             <p className="font-bold md:text-sm"> Orders</p>
           </button>
-          <button className="Link relative flex items-center">
+          <button
+            className="Link relative flex items-center"
+            onClick={() => router.push('checkout')}
+          >
             <span className="absolute top-0 right-0 md:right-10 bg-yellow-400 h-4 w-4 text-center rounded-full text-black font-bold">
               0
             </span>

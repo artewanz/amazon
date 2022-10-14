@@ -33,4 +33,11 @@
 
 ### Авторизация
 
-Для авторизации испольуется библиотека `next-auth` (см. документацию) и `firebase`
+Для авторизации испольуется библиотека `next-auth` (см. документацию)
+
+1. Авторизация через Google OAuth
+   1. Создаем приложение в Google Cloud console и Firebase
+   2. APIs & Services -> Credentials -> Create Credentials создаем новый
+   3. Вставляем в Authorized JavaScript origins и Authorized redirect URIs URL сайта
+   4. В Firebase заходим во вкладку Auth и включаем там авторизацию через гугл.
+   5. Копируем Web client ID и Web client secret, вставляем их в файл `.env.local`
