@@ -5,10 +5,26 @@ import {
   Bars3Icon as MenuIcon
 } from '@heroicons/react/24/outline'
 import { Logo } from '@assets'
-import { signIn } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 function Header() {
-  const user_name = 'Artem'
+  const session = useSession()
+  const user_name = session.data?.user.name
+
+  function openAccountAndListsDropdown() {}
+
+  const SignInUser =
+    session.status == 'unauthenticated' ? (
+      <button className="Link font-bold text-base" onClick={() => signIn()}>
+        <p>Sign In</p>
+      </button>
+    ) : (
+      <button className="Link" onClick={() => signOut()}>
+        <p>Hello, {user_name}</p>
+        <p className="font-bold md:text-sm">Account & Lists</p>
+      </button>
+    )
+
   return (
     <header className="text-white text-xs">
       {/* Top nav */}
@@ -40,10 +56,7 @@ function Header() {
 
         {/* Right side */}
         <div className="flex items-center gap-4 mx-6">
-          <button className="Link" onClick={() => signIn()}>
-            <p>Hello, {user_name}</p>
-            <p className="font-bold md:text-sm">Account & Lists</p>
-          </button>
+          {SignInUser}
           <button className="Link">
             <p>Returns</p>
             <p className="font-bold md:text-sm"> Orders</p>
