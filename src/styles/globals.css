@@ -1,7 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
+@layer base {
+  :root {
+    font-family: 'Lato', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-gray-100;
+  }
+}
+
+@layer components {
+  .Link {
+    @apply cursor-pointer hover:underline text-left p-2 active:bg-amazon_blue-light;
+  }
+
+  .bg-yellow {
+    @apply bg-yellow-500;
+  }
+
+  .Button {
+    @apply bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm;
+  }
+  .Button:hover,
+  .Button:focus {
+    @apply outline-none ring-1 ring-yellow-200;
+  }
+  .Button:active {
+    @apply from-yellow-500 to-yellow-300;
+  }
+}
+
+.slider img {
+  @apply h-full object-cover object-center;
 }
