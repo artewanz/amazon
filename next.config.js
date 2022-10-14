@@ -4,6 +4,6 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['pngimg.com', 'fakestoreapi.com']
+    domains: ['fakestoreapi.com']
   }
 }

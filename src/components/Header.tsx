@@ -4,6 +4,7 @@ import {
   ShoppingCartIcon,
   Bars3Icon as MenuIcon
 } from '@heroicons/react/24/outline'
+import { Logo } from '@assets'
 
 function Header() {
   const user_name = 'Artem'
@@ -13,7 +14,7 @@ function Header() {
       <div className="bg-amazon_blue flex items-center w-full p-1 py-2">
         <div className=" flex items-center flex-grow sm:flex-grow-0 mt-2">
           <Image
-            src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+            src={Logo}
             width={150}
             height={40}
             objectFit="contain"
@@ -66,7 +67,7 @@ function Header() {
         <ul className="flex gap-4 ml-4">
           <li className="Link">Prime Video</li>
           <li className="Link">Amazon Business</li>
-          <li className="Link">Today's Deals</li>
+          <li className="Link">Today`&apos;`s Deals</li>
           <li className="Link hidden sm:inline-flex">Electronics</li>
           <li className="Link hidden sm:inline-flex">Food & Grocery</li>
           <li className="Link hidden md:inline-flex">Prime</li>
