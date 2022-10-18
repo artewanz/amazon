@@ -1,6 +1,7 @@
 import { Carousel } from 'react-responsive-carousel'
 import { Banner1, Banner2, Banner3 } from '@assets'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import Image from 'next/image'
 
 function Banner() {
   return (
@@ -15,15 +16,31 @@ function Banner() {
         interval={5000}
         className="slider"
       >
-        <div>
-          <img loading="lazy" src={Banner1.src} alt="" />
-        </div>
-        <div>
-          <img loading="lazy" src={Banner2.src} alt="" />
-        </div>
-        <div>
-          <img loading="lazy" src={Banner3.src} alt="" />
-        </div>
+        <figure className="w-full lg:h-[50vh] h-[20vh] relative">
+          <Image
+            src={Banner1}
+            alt=""
+            layout="fill"
+            priority
+            objectPosition={'top center'}
+          />
+        </figure>
+        <figure className="w-full lg:h-[50vh] h-[20vh] relative">
+          <Image
+            src={Banner2}
+            alt=""
+            layout="fill"
+            objectPosition={'top center'}
+          />
+        </figure>
+        <figure className="w-full lg:h-[50vh] h-[20vh] relative">
+          <Image
+            src={Banner3}
+            alt=""
+            layout="fill"
+            objectPosition={'top center'}
+          />
+        </figure>
       </Carousel>
     </section>
   )

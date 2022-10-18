@@ -3,6 +3,9 @@ export interface IProduct {
   title: string
   price: number
   description: string
+  rating: number
   category: string
   image: string
+  hasPrime: boolean
+  quantity?: number
 }

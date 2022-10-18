@@ -7,12 +7,16 @@ import {
 import { Logo } from '@assets'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
+import { selectItems } from '@src/redux/slices/basketSlice'
+import { IProduct } from '@src/types/IProduct'
 
 function Header() {
   const session = useSession()
   const user_name = session.data?.user.name
 
   const router = useRouter()
+  const items: IProduct[] = useSelector(selectItems)
 
   function openAccountAndListsDropdown() {}
 
@@ -29,19 +33,19 @@ function Header() {
     )
 
   return (
-    <header className="text-white text-xs">
+    <header className="text-white text-xs sticky top-0 z-20">
       {/* Top nav */}
-      <div className="bg-amazon_blue flex items-center w-full p-1 py-2">
+      <div className="bg-amazon_blue flex items-center justify-between w-full p-4 py-2">
         <button
-          className=" flex items-center flex-grow sm:flex-grow-0 mt-2"
+          className="flex flex-none items-center mt-2 relative w-32 h-10"
           onClick={() => router.push('/')}
         >
           <Image
             src={Logo}
-            width={150}
-            height={40}
-            objectFit="contain"
             className="cursor-pointer"
+            layout="fill"
+            objectFit="contain"
+            objectPosition={'left center'}
           />
         </button>
 
@@ -72,7 +76,7 @@ function Header() {
             onClick={() => router.push('checkout')}
           >
             <span className="absolute top-0 right-0 md:right-10 bg-yellow-400 h-4 w-4 text-center rounded-full text-black font-bold">
-              0
+              {items.length}
             </span>
             <ShoppingCartIcon className="h-10" />
             <p className="hidden font-bold md:text-sm md:flex mt-2">Basket</p>
@@ -95,7 +99,7 @@ function Header() {
           <li className="Link hidden sm:inline-flex">Food & Grocery</li>
           <li className="Link hidden md:inline-flex">Prime</li>
           <li className="Link hidden md:inline-flex">Buy Again</li>
-          <li className="Link hidden md:inline-flex">Shopper Toolkit</li>
+          <li className="Link hidden lg:inline-flex">Shopper Toolkit</li>
           <li className="Link hidden lg:inline-flex">Health & Personal Care</li>
         </ul>
       </div>

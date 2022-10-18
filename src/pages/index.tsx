@@ -4,18 +4,20 @@ import Banner from '@src/components/Banner'
 import ProductFeed from '@src/components/ProductFeed'
 import { IProduct } from '@src/types/IProduct'
 import DefaultLayout from '@src/layouts/DefaultLayout'
+import { useState } from 'react'
 
 type Props = {
   products: IProduct[]
 }
 
-const Home: NextPage = ({ products }: Props) => {
+const Home: NextPage = (props: Props) => {
+  const [products, setProducts] = useState(props.products)
   return (
     <DefaultLayout title={'Amazon'}>
       {/* Banner */}
       <Banner />
       {/* Product Feed */}
-      <ProductFeed products={products} />
+      <ProductFeed products={products} setProducts={setProducts} />
     </DefaultLayout>
   )
 }
@@ -29,7 +31,11 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      products
+      products: products.map((prod) => ({
+        ...prod,
+        hasPrime: true,
+        rating: Math.random() * 5
+      }))
     }
   }
 }

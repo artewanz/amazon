@@ -41,3 +41,14 @@
    3. Вставляем в Authorized JavaScript origins и Authorized redirect URIs URL сайта
    4. В Firebase заходим во вкладку Auth и включаем там авторизацию через гугл.
    5. Копируем Web client ID и Web client secret, вставляем их в файл `.env.local`
+   6. Оборачиваем main-app в компонент SessionProviderL
+   ```js
+   import { SessionProvider } from 'next-auth/react'
+   function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+     return (
+       <SessionProvider session={session}>
+         <Component {...pageProps} />
+       </SessionProvider>
+     )
+   }
+   ```

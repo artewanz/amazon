@@ -15,6 +15,7 @@
 
   body {
     @apply bg-gray-100;
+    overflow-x: hidden;
   }
 }
 
@@ -36,6 +37,12 @@
   }
   .Button:active {
     @apply from-yellow-500 to-yellow-300;
+  }
+  .Button:disabled {
+    @apply from-gray-200 to-gray-300 border-gray-400 cursor-not-allowed;
+  }
+  .Button:disabled:hover {
+    @apply border-gray-400 ring-0;
   }
 }
 
